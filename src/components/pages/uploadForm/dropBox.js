@@ -67,7 +67,7 @@ function DropBox({ onDrop }) {
           <p>Drag 'n' drop files here</p>
           <span className="mb-2 mt-0 fs-6">OR</span>
           <Button variant="outline-primary" onClick={open}>
-            Click to select file
+            Click to select file(s)
           </Button>
         </Container>
       </section>
