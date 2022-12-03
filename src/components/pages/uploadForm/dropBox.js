@@ -1,5 +1,6 @@
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
+import Button from "react-bootstrap/Button";
 
 const getColor = (props) => {
   if (props.isDragAccept) {
@@ -63,10 +64,11 @@ function DropBox({ onDrop }) {
           {...getRootProps({ isDragAccept, isFocused, isDragReject })}
         >
           <input {...getInputProps()} />
-          <p>Drag 'n' drop some files here</p>
-          <button type="button" className="btn" onClick={open}>
+          <p>Drag 'n' drop files here</p>
+
+          <Button variant="outline-primary" onClick={open}>
             Click to select file
-          </button>
+          </Button>
         </Container>
       </section>
       {lists && lists.length > 0 && (
