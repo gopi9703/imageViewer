@@ -7,7 +7,9 @@ const GridCard = ({ data, rowsPerColumn }) => {
         style={{ width: widthValue + "%" }}
       >
         <img src={data.urls.regular} alt="" className="w-100" height={150} />
-        <p className="fs-6 text-truncate fw-semibold">{data.user.first_name}</p>
+        <p className="fs-6 text-truncate fw-semibold text-capitalize">
+          {data.user.first_name}
+        </p>
       </div>
     </>
   );

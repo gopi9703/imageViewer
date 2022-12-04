@@ -18,6 +18,14 @@ const RenderApiData = ({ uploadedData }) => {
       .then((response) => {
         setLoading(false);
         console.log(response.data);
+        response.data.forEach(function (item) {
+          item.user.first_name = item.user.first_name.toLowerCase();
+        });
+
+        uploadedData.forEach(function (item) {
+          item.user.first_name = item.user.first_name.toLowerCase();
+        });
+
         setListData([...response.data, ...uploadedData]);
         setDropDownData([...response.data, ...uploadedData]);
       })
