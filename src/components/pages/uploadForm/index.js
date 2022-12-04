@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import DropBox from "./dropBox";
 import ShowImage from "./showImage";
 
-const UploadFrom = (props) => {
+const UploadFrom = ({ handleValue }) => {
   const [images, setImages] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -12,7 +12,15 @@ const UploadFrom = (props) => {
       reader.onload = function (e) {
         setImages((prevState) => [
           ...prevState,
-          { id: index, src: e.target.result },
+          {
+            id: index,
+            regular: e.target.result,
+            name: file.path,
+            user: {
+              first_name: file.path.substr(0, file.path.lastIndexOf(".")),
+            },
+            urls: { regular: e.target.result, small_s3: e.target.result },
+          },
         ]);
       };
 
@@ -20,12 +28,13 @@ const UploadFrom = (props) => {
       return file;
     });
   }, []);
+
+  handleValue(images);
+
   return (
     <>
-      <div className="App">
-        <DropBox onDrop={onDrop} />
-        <ShowImage images={images} />
-      </div>
+      <DropBox onDrop={onDrop} />
+      <ShowImage images={images} />
     </>
   );
 };

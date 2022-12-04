@@ -3,10 +3,8 @@ import ImageViewer from "./components/pages/imageViewer";
 
 function App() {
   return (
-    <div className="App">
-      <div className="tab_wrapper">
-        <ImageViewer />
-      </div>
+    <div className="tab_wrapper">
+      <ImageViewer />
     </div>
   );
 }

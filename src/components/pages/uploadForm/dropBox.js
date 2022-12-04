@@ -1,6 +1,5 @@
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
-import Button from "react-bootstrap/Button";
 
 const getColor = (props) => {
   if (props.isDragAccept) {
@@ -15,7 +14,7 @@ const getColor = (props) => {
   return "#eeeeee";
 };
 
-const Container = styled.div`
+const ContainerView = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -25,7 +24,7 @@ const Container = styled.div`
   border-radius: 10px;
   border-color: ${(props) => getColor(props)};
   border-style: dashed;
-  background-color: #fafafa;
+  background-color: transapent;
   color: black;
   font-weight: bold;
   font-size: 1.4rem;
@@ -58,23 +57,23 @@ function DropBox({ onDrop }) {
   return (
     <>
       {" "}
-      <section className="dropbox">
-        <Container
-          className="dropbox w-50 d-flex m-auto"
+      <section className="dropbox" onClick={open}>
+        <ContainerView
+          className="dropbox d-flex m-auto"
           {...getRootProps({ isDragAccept, isFocused, isDragReject })}
         >
           <input {...getInputProps()} />
-          <p>Drag 'n' drop files here</p>
+          {/* <p>Drag 'n' drop files here</p>
           <span className="mb-2 mt-0 fs-6">OR</span>
           <Button variant="outline-primary" onClick={open}>
             Click to select file(s)
-          </Button>
-        </Container>
+          </Button> */}
+        </ContainerView>
       </section>
       {lists && lists.length > 0 && (
-        <aside className="mt-4">
+        <aside className="mt-4 px-2 py-2">
           <h4>Uploaded List</h4>
-          <p>{lists}</p>
+          {/* <p>{lists}</p> */}
         </aside>
       )}
     </>

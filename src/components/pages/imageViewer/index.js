@@ -1,24 +1,33 @@
 import React, { useState } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import UploadFrom from "../uploadForm";
 import RenderApiData from "../displayApiTab";
 
 const ImageViewer = () => {
-  const [tabIndex, setTabIndex] = useState(0);
-  return (
-    <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-      <TabList>
-        <Tab>Image Viewer</Tab>
-        <Tab>Display API Data</Tab>
-      </TabList>
+  const [key, setKey] = useState("Image Viewer");
+  const [uploadedData, setUploadedData] = useState([]);
 
-      <TabPanel>
-        <UploadFrom />
-      </TabPanel>
-      <TabPanel>
-        <RenderApiData />
-      </TabPanel>
+  const handleValue = (newValue) => {
+    console.log("newValue", newValue);
+    setUploadedData(newValue);
+  };
+  return (
+    <Tabs
+      id="controlled-tab-example"
+      activeKey={key}
+      onSelect={(k) => {
+        setKey(k);
+        setUploadedData(uploadedData);
+      }}
+      className="mb-3"
+    >
+      <Tab eventKey="Image Viewer" title="Image Viewer">
+        <UploadFrom handleValue={handleValue} />
+      </Tab>
+      <Tab eventKey="Display Unsplash Data" title="Display Unsplash Data">
+        <RenderApiData uploadedData={uploadedData} />
+      </Tab>
     </Tabs>
   );
 };

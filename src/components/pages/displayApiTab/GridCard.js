@@ -6,8 +6,8 @@ const GridCard = ({ data, rowsPerColumn }) => {
         className="my-2 px-2 d-inline-block"
         style={{ width: widthValue + "%" }}
       >
-        <img src={data.thumbnailUrl} alt="" className="w-100" />
-        <p className="fs-6 text-truncate fw-semibold">{data.title}</p>
+        <img src={data.urls.regular} alt="" className="w-100" height={150} />
+        <p className="fs-6 text-truncate fw-semibold">{data.user.first_name}</p>
       </div>
     </>
   );
