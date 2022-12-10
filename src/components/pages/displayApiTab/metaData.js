@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { ToastContainer, toast } from "react-toast";
 
-const ImageMetaData = ({ metaData, listData, handleClose }) => {
+const ImageMetaData = ({ metaData, handleClose }) => {
   const [validated, setValidated] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [tags, setTags] = useState([]);
@@ -35,7 +35,13 @@ const ImageMetaData = ({ metaData, listData, handleClose }) => {
   };
 
   const ApplyTagChanges = () => {
-    metaData["tags"] = tags;
+    if (metaData.hasOwnProperty("tags")) {
+      const updatedArray = tags;
+      metaData.tags?.push(updatedArray);
+    } else {
+      metaData["tags"] = tags;
+    }
+
     handleClose();
   };
 

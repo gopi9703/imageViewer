@@ -2,6 +2,7 @@ const GridCard = ({ data, rowsPerColumn, handleShow, handleMetaData }) => {
   const getSelectedData = () => {
     handleShow();
     handleMetaData(data);
+    console.log(data);
   };
 
   let widthValue = 100 / rowsPerColumn;
