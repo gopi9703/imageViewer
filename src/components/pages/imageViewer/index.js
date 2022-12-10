@@ -9,7 +9,6 @@ const ImageViewer = () => {
   const [uploadedData, setUploadedData] = useState([]);
 
   const handleValue = (newValue) => {
-    console.log("newValue", newValue);
     setUploadedData(newValue);
   };
   return (

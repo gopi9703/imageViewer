@@ -1,10 +1,16 @@
 import Image from "./Image";
 
-const ShowImage = ({ images }) => {
+const ShowImage = ({ images, deleteSelectedImage }) => {
   const show = (image) => {
-    return <Image image={image} key={image} />;
+    return (
+      <Image
+        image={image}
+        imagesList={images}
+        deleteSelectedImage={deleteSelectedImage}
+      />
+    );
   };
-  console.log(images);
+
   return (
     <div className="d-flex flex-row px-2 flex-wrap">
       {images && images.length > 0 && images.map(show)}

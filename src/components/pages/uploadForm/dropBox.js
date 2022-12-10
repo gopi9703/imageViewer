@@ -42,7 +42,11 @@ function DropBox({ onDrop }) {
     isFocused,
     isDragReject,
   } = useDropzone({
-    accept: "image/*",
+    accept: {
+      "image/png": [".png"],
+      "image/jpg": [".jpg"],
+      "image/jpeg": [".jpeg"],
+    },
     onDrop,
     noClick: true,
     noKeyboard: true,
